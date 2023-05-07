@@ -17,7 +17,7 @@ export class UserManagementComponent {
     this.daneRef = db.object('users').valueChanges();
     this.daneRef.subscribe((val:any)=>{
     this.users=Object.keys(val);
-    this.users.forEach(function(val,idx,arr){arr[idx]=val.replace("!",".")});
+    this.users.forEach(function(val,idx,arr){arr[idx]=val.replaceAll("!",".")});
     let arr=Array.from(Object.values(val));
     arr.forEach((a:any)=>this.data.push([a.admin,a.client,a.manager,a.banned]));
     });

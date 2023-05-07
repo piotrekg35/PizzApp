@@ -40,7 +40,7 @@ export class RatingComponent {
     });
     rs.clientObservable.subscribe(a=>this.client=a);
     rs.managerObservable.subscribe(a=>this.manager=a);
-    rs.emailObservable.subscribe(a=>this.email=a.replace(".","!"));
+    rs.emailObservable.subscribe(a=>this.email=a.replaceAll(".","!"));
   }
   ngOnInit(){
     let daneRef = this.db.list('ratings/'+String(this.id)).valueChanges();
@@ -52,7 +52,7 @@ export class RatingComponent {
       this.rating_list=val;
       if(this.rating_list.length==0)this.msg="Brak opinii";
       this.rating_list.forEach((a:any)=>{
-        if(a.email==this.email.replace("!","."))
+        if(a.email==this.email.replaceAll("!","."))
           this.reviewed=true;
       });
     });
@@ -69,7 +69,7 @@ export class RatingComponent {
       return;
     }
     const daneRef = this.db.object('ratings/'+String(this.id)+'/'+this.email);
-    let normal_email=this.email.replace("!",".");
+    let normal_email=this.email.replaceAll("!",".");
     if(this.new_rating===undefined && this.date===undefined)
       daneRef.set({title: this.title,description: this.description,email:normal_email});
     else if(this.new_rating===undefined)
