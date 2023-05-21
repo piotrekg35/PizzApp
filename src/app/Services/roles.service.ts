@@ -21,7 +21,7 @@ export class RolesService {
     this.userData.subscribe(a=>{
       if(!a?.email)return;
       this.emailObservable.next(a.email);
-      let obj=db.object("users/"+a?.email.replace(".","!")).valueChanges();
+      let obj=db.object("users/"+a?.email.replaceAll(".","!")).valueChanges();
       obj.subscribe((b:any)=>{
         this.adminObservable.next(b.admin);
         this.clientObservable.next(b.client);

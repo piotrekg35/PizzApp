@@ -25,7 +25,7 @@ export class RegisterComponent {
     this.rs.bannedObservable.next(false);
     this.angularFireAuth.createUserWithEmailAndPassword(this.email_input,this.pwd_input)
     .then(()=>{
-      this.db.object('users/'+this.email_input.replace(".","!")).set({admin: false, manager: false, client: true, banned: false});
+      this.db.object('users/'+this.email_input.replaceAll(".","!")).set({admin: false, manager: false, client: true, banned: false});
       this.router.navigate(['/']);
     }).catch((a)=>{
       if (JSON.stringify(a).indexOf("auth/invalid-email")>=0)this.msg="Błędny email.";
@@ -34,6 +34,9 @@ export class RegisterComponent {
       else this.msg="Błędne dane. Spróbuj ponownie!";
       return;
     });
+  }
+  goToLoginPage():void{
+    this.router.navigate(['/zaloguj']);
   }
   
 }

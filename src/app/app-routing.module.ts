@@ -9,11 +9,14 @@ import { RegisterComponent } from './register/register.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import { AdminGuard } from './guard/admin.guard';
+import { CartGuard } from './guard/cart.guard';
 import { ManagerGuard } from './guard/manager.guard';
 import { DishManagementComponent } from './dish-management/dish-management.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [ 
   { path: 'menu', component: DishesComponent }, 
+  { path: 'profil', component: ProfileComponent, canActivate: [CartGuard] }, 
   { path: 'dodaj', component: AddingDishComponent, canActivate: [ManagerGuard] },
   { path: 'koszyk', component: CartComponent },
   { path: 'produkt/:id', component: DishDetailsComponent },

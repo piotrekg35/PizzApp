@@ -23,7 +23,7 @@ import { UserElementComponent } from './user-element/user-element.component';
 import { DishManagementComponent } from './dish-management/dish-management.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ProfileComponent } from './profile/profile.component';
 
 const environment = {
   firebase:{
@@ -55,6 +55,7 @@ const environment = {
     UserManagementComponent,
     UserElementComponent,
     DishManagementComponent,
+    ProfileComponent
   ],
   imports: [
     MatTabsModule,

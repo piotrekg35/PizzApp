@@ -17,7 +17,7 @@ export class CartComponent {
   msg:string="";
   constructor(private cs:CartService,private db: AngularFireDatabase, private rs:RolesService, private datePipe: DatePipe){
     cs.reservedObservable.subscribe(r=>this.reserved=r);
-    rs.emailObservable.subscribe(a=>this.email=a.replace(".","!"));
+    rs.emailObservable.subscribe(a=>this.email=a.replaceAll(".","!"));
     let tranformed_date = this.datePipe.transform(new Date(), 'dd-MM-yyyy hh:mm:ss');
     if(tranformed_date)this.date=tranformed_date;
   }

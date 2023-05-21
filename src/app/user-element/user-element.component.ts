@@ -17,18 +17,18 @@ export class UserElementComponent {
 
   adminChange():void{
     this.admin=!this.admin;
-    this.db.object('users/'+this.email.replace('.','!')).update({ admin: this.admin });
+    this.db.object('users/'+this.email.replaceAll('.','!')).update({ admin: this.admin });
   }
   clientChange():void{
     this.client=!this.client;
-    this.db.object('users/'+this.email.replace('.','!')).update({ client: this.client });
+    this.db.object('users/'+this.email.replaceAll('.','!')).update({ client: this.client });
   }
   managerChange():void{
     this.manager=!this.manager;
-    this.db.object('users/'+this.email.replace('.','!')).update({ manager: this.manager });
+    this.db.object('users/'+this.email.replaceAll('.','!')).update({ manager: this.manager });
   }
   bannedChange():void{
     this.banned=!this.banned;
-    this.db.object('users/'+this.email.replace('.','!')).update({ banned: this.banned });
+    this.db.object('users/'+this.email.replaceAll('.','!')).update({ banned: this.banned });
   }
 }
