@@ -15,7 +15,9 @@ export class LogInComponent{
   pwd_input:string="";
   msg:string="";
   
-  constructor(private angularFireAuth: AngularFireAuth,private router:Router,private rs:RolesService,private db: AngularFireDatabase) {}
+  constructor(private angularFireAuth: AngularFireAuth,private router:Router,private rs:RolesService,private db: AngularFireDatabase) {
+    this.angularFireAuth.useDeviceLanguage();
+  }
   login(){
     this.rs.loggedObservable.next(true);
     this.angularFireAuth.signInWithEmailAndPassword(this.email_input,this.pwd_input)
@@ -36,6 +38,10 @@ export class LogInComponent{
       });
   }
   forgotPassword(){
+    if(this.email_input.length==0){
+      this.msg="Podaj email";
+      return;
+    }
     this.angularFireAuth.sendPasswordResetEmail(this.email_input)
     .then(()=>this.msg="Wysłano email w celu zresetowania hasła")
     .catch((a)=>{
