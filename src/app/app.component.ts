@@ -48,4 +48,7 @@ export class AppComponent {
     this.cs.reserved.splice(0);
     this.router.navigate(['/']);
   }
+  goToProfile():void{
+    this.router.navigate(['/profil']);
+  }
 }

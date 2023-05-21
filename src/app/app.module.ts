@@ -21,6 +21,7 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserElementComponent } from './user-element/user-element.component';
 import { DishManagementComponent } from './dish-management/dish-management.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const environment = {
   firebase:{
@@ -51,7 +52,8 @@ const environment = {
     AdminViewComponent,
     UserManagementComponent,
     UserElementComponent,
-    DishManagementComponent
+    DishManagementComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
