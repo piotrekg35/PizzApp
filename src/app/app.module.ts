@@ -21,6 +21,9 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { UserElementComponent } from './user-element/user-element.component';
 import { DishManagementComponent } from './dish-management/dish-management.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 const environment = {
   firebase:{
@@ -51,15 +54,17 @@ const environment = {
     AdminViewComponent,
     UserManagementComponent,
     UserElementComponent,
-    DishManagementComponent
+    DishManagementComponent,
   ],
   imports: [
+    MatTabsModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
