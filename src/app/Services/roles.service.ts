@@ -15,12 +15,14 @@ export class RolesService {
   bannedObservable = new ReplaySubject<boolean>();
   loggedObservable = new ReplaySubject<boolean>();
   emailObservable = new ReplaySubject<string>();
+  userUidObservable = new ReplaySubject<string>()
 
   constructor(private angularFireAuth: AngularFireAuth, private db: AngularFireDatabase) {
     this.userData = angularFireAuth.authState; 
     this.userData.subscribe(a=>{
       if(!a?.email)return;
       this.emailObservable.next(a.email);
+      this.userUidObservable.next(a.uid);
       let obj=db.object("users/"+a?.email.replaceAll(".","!")).valueChanges();
       obj.subscribe((b:any)=>{
         this.adminObservable.next(b.admin);
