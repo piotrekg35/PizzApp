@@ -7,7 +7,7 @@ describe('register_with_too_short_password', function() {
   let driver
   let vars
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('firefox').build()
+    driver = await new Builder().forBrowser('chrome').build()
     vars = {}
   })
   afterEach(async function() {
