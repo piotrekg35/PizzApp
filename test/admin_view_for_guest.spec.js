@@ -7,7 +7,7 @@ describe('admin view for guest', function() {
   let driver
   let vars
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('firefox').build()
+    driver = await new Builder().forBrowser('chrome').build()
     vars = {}
   })
   afterEach(async function() {

@@ -7,7 +7,7 @@ describe('admin view for admin', function() {
   let driver
   let vars
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('firefox').build()
+    driver = await new Builder().forBrowser('chrome').build()
     vars = {}
   })
   afterEach(async function() {
@@ -19,7 +19,7 @@ describe('admin view for admin', function() {
     await driver.findElement(By.id("exampleInputEmail1")).sendKeys("test@test.pl")
     await driver.findElement(By.id("exampleInputPassword1")).sendKeys("test123")
     await driver.findElement(By.css(".btn")).click()
-    await driver.sleep(1000)
+    await driver.sleep(2000)
     await driver.findElement(By.linkText("Admin")).click()
     vars["url"] = await driver.executeScript("return window.location.href;")
     assert(vars["url"].toString() == "http://localhost:4200/admin")
