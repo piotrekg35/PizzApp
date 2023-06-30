@@ -22,19 +22,24 @@ describe('Buy Dishes 2', function() {
     await driver.findElement(By.id("exampleInputPassword1")).click()
     await driver.findElement(By.id("exampleInputPassword1")).sendKeys("test123")
     await driver.findElement(By.css(".btn")).click()
+    await delay(2000);
     await driver.findElement(By.linkText("Menu")).click()
     {
       const element = await driver.findElement(By.linkText("Menu"))
-      await driver.actions({ bridge: true }).moveToElement(element).perform()
+      await driver.actions({ bridge: true }).move({ origin: element }).perform()
     }
     {
-      const element = await driver.findElement(By.CSS_SELECTOR, "body")
-      await driver.actions({ bridge: true }).moveToElement(element, 0, 0).perform()
+      const element = await driver.findElement(By.css("body"))
+      await driver.actions({ bridge: true }).move({ origin: element }).perform()
     }
-    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3) path")).click()
-    await driver.findElement(By.css(".col-sm-6:nth-child(3) .ng-star-inserted > .ng-fa-icon:nth-child(3) path")).click()
-    await driver.findElement(By.linkText("Koszyk(2)")).click()
-    await driver.findElement(By.css(".btn-dark")).click()
+    await delay(2000);
+    await driver.findElement(By.linkText("Koszyk")).click()
     await driver.findElement(By.css(".btn")).click()
   })
 })
+
+function delay(milliseconds) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+}
