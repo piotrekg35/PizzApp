@@ -2,7 +2,7 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
-describe('Remove Dishes', function() {
+describe('dfdsf', function() {
   this.timeout(30000)
   let driver
   let vars
@@ -13,15 +13,22 @@ describe('Remove Dishes', function() {
   afterEach(async function() {
     await driver.quit();
   })
-  it('Remove Dishes', async function() {
+  it('dfdsf', async function() {
     await driver.get("http://localhost:4200/")
-    await driver.manage().window().setRect({ width: 809, height: 816 })
+    await driver.manage().window().setRect({ width: 806, height: 817 })
     await driver.findElement(By.linkText("Zaloguj")).click()
     await driver.findElement(By.id("exampleInputEmail1")).click()
     await driver.findElement(By.id("exampleInputEmail1")).sendKeys("patryktest@email.com")
     await driver.findElement(By.id("exampleInputPassword1")).click()
     await driver.findElement(By.id("exampleInputPassword1")).sendKeys("test123")
     await driver.findElement(By.css(".btn")).click()
+    await driver.sleep(2000)
     await driver.findElement(By.linkText("Menu")).click()
+    await driver.sleep(1000)
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3)")).click()
+    await driver.findElement(By.linkText("Koszyk(1)")).click()
+    await driver.findElement(By.linkText("Menu")).click()
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-fa-icon:nth-child(1)")).click()
+    assert(driver.findElement(By.linkText("Koszyk")) !== null)
   })
 })

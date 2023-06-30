@@ -2,7 +2,7 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
-describe('Buy Dishes 2', function() {
+describe('Test buying dishes', function() {
   this.timeout(30000)
   let driver
   let vars
@@ -13,7 +13,7 @@ describe('Buy Dishes 2', function() {
   afterEach(async function() {
     await driver.quit();
   })
-  it('Buy Dishes 2', async function() {
+  it('Test buying dishes', async function() {
     await driver.get("http://localhost:4200/")
     await driver.manage().window().setRect({ width: 806, height: 816 })
     await driver.findElement(By.linkText("Zaloguj")).click()
@@ -22,24 +22,17 @@ describe('Buy Dishes 2', function() {
     await driver.findElement(By.id("exampleInputPassword1")).click()
     await driver.findElement(By.id("exampleInputPassword1")).sendKeys("test123")
     await driver.findElement(By.css(".btn")).click()
-    await delay(2000);
+    await driver.sleep(2000)
     await driver.findElement(By.linkText("Menu")).click()
-    {
-      const element = await driver.findElement(By.linkText("Menu"))
-      await driver.actions({ bridge: true }).move({ origin: element }).perform()
-    }
-    {
-      const element = await driver.findElement(By.css("body"))
-      await driver.actions({ bridge: true }).move({ origin: element }).perform()
-    }
-    await delay(2000);
-    await driver.findElement(By.linkText("Koszyk")).click()
-    await driver.findElement(By.css(".btn")).click()
+    await driver.sleep(1000)
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3)")).click()
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3)")).click()
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3)")).click()
+    await driver.findElement(By.css(".col-sm-6:nth-child(1) .ng-star-inserted > .ng-fa-icon:nth-child(3)")).click()
+    await driver.findElement(By.linkText("Koszyk(4)")).click()
+    await driver.findElement(By.css(".btn-dark")).click()
+    await driver.findElement(By.linkText("Menu")).click()
+    await driver.sleep(500)
+    assert(driver.findElement(By.linkText("Koszyk")) !== null)
   })
 })
-
-function delay(milliseconds) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, milliseconds);
-  });
-}
