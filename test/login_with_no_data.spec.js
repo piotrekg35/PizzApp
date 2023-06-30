@@ -2,24 +2,23 @@
 const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
-describe('login_without_password', function() {
+describe('login_with_no_data', function() {
   this.timeout(30000)
   let driver
   let vars
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('firefox').build()
+    driver = await new Builder().forBrowser('chrome').build()
     vars = {}
   })
   afterEach(async function() {
     await driver.quit();
   })
-  it('login_without_password', async function() {
+  it('login_with_no_data', async function() {
     await driver.get("http://localhost:4200/zaloguj/")
     await driver.manage().window().setRect({ width: 989, height: 666 })
-    await driver.findElement(By.id("exampleInputEmail1")).sendKeys("ala@ala.pl")
     await driver.findElement(By.css(".btn")).click()
     await driver.wait(until.elementLocated(By.css("p:nth-child(1)")), 3000)
     await driver.sleep(1000)
-    assert(await driver.findElement(By.css("p:nth-child(1)")).getText() == "Błędne dane. Spróbuj ponownie!")
+    assert(await driver.findElement(By.css("p:nth-child(1)")).getText() == "Błędny email.")
   })
 })
